@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}Projects | Ananya Kushwaha{% endblock %}
+
+{% block content %}
+<section class="section">
+  <div class="container">
+    <div class="text-center mb-4 reveal">
+      <p class="eyebrow">Projects</p>
+      <h2 class="section-title">Things I've <span class="text-gradient">built</span></h2>
+      <p class="text-muted-c">Click on an image to open the project.</p>
+    </div>
+
+    <div class="filters text-center mb-5">
+      <button class="filter-btn active" data-filter="all" type="button">All</button>
+      <button class="filter-btn" data-filter="frontend" type="button">Frontend</button>
+      <button class="filter-btn" data-filter="backend" type="button">Backend</button>
+    </div>
+
+    <div class="row g-4" id="projectGrid">
+      {% for p in projects %}
+        {% include '_project_card.html' %}
+      {% empty %}
+        <p class="text-center text-muted-c">Projects abhi add nahi hue. Admin panel (/admin) se add karo.</p>
+      {% endfor %}
+    </div>
+    <p id="noProjects" class="text-center text-muted-c mt-4" style="display:none;">Is category mein abhi koi project nahi hai.</p>
+  </div>
+</section>
+{% endblock %}

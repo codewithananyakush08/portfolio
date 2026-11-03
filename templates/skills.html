@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% block title %}Skills | Ananya Kushwaha{% endblock %}
+
+{% block content %}
+<section class="section">
+  <div class="container">
+    <div class="text-center mb-5 reveal">
+      <p class="eyebrow">Skills</p>
+      <h2 class="section-title">What I <span class="text-gradient">work with</span></h2>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-12 col-md-6 col-lg-4 reveal">
+        <div class="skill-card h-100">
+          <div class="skill-icon"><i class="bi bi-code-slash"></i></div>
+          <h3>Frontend</h3>
+          <div class="chips">
+            <span class="chip">HTML5</span>
+            <span class="chip">CSS3</span>
+            <span class="chip">JavaScript</span>
+            <span class="chip">Bootstrap</span>
+            <span class="chip">Responsive Design</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-4 reveal">
+        <div class="skill-card h-100">
+          <div class="skill-icon"><i class="bi bi-server"></i></div>
+          <h3>Backend</h3>
+          <div class="chips">
+            <span class="chip">Python</span>
+            <span class="chip">Django</span>
+            <span class="chip">CRUD</span>
+            <span class="chip">C Programming</span>
+             <span class="chip">FAST API</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-4 reveal">
+        <div class="skill-card h-100">
+          <div class="skill-icon"><i class="bi bi-database"></i></div>
+          <h3>Database &amp; Tools</h3>
+          <div class="chips">
+            <span class="chip">SQL</span>
+            <span class="chip">Git &amp; GitHub</span>
+            <span class="chip">VS Code</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+     {% if certificates %}
+<div class="text-center mt-5 mb-4 reveal">
+  <p class="eyebrow">Certificates</p>
+  <h3 class="section-title">My <span class="text-gradient">Certification</span></h3>
+</div>
+<div class="row g-4">
+  {% for c in certificates %}
+  <div class="col-12 col-md-6 col-lg-4 reveal">
+    <article class="cert-card h-100">
+      <a href="{{ c.image.url }}" target="_blank" rel="noopener" class="cert-thumb" aria-label="View {{ c.title }}">
+        <img src="{{ c.image.url }}" alt="{{ c.title }}" loading="lazy">
+      </a>
+      <div class="cert-body">
+        <h4>{{ c.title }}</h4>
+        <p class="cert-meta">{{ c.issuer }} &middot; {{ c.date }}</p>
+        {% if c.description %}<p class="cert-desc">{{ c.description }}</p>{% endif %}
+        {% if c.verify_link %}<a href="{{ c.verify_link }}" target="_blank" rel="noopener" class="btn btn-sm btn-outline-main">Verify <i class="bi bi-box-arrow-up-right ms-1"></i></a>{% endif %}
+      </div>
+    </article>
+  </div>
+  {% endfor %}
+</div>
+{% endif %}
+  </div>
+</section>
+<!-- Chips ko apne skills ke hisab se badal lo -->
+{% endblock %}

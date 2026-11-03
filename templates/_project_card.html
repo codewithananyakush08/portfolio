@@ -1,0 +1,24 @@
+<div class="col-12 col-md-6 col-lg-4 project-item" data-category="{{ p.category }}">
+  <article class="project-card h-100">
+    <a class="project-thumb" href="{% if p.main_link %}{{ p.main_link }}{% else %}#{% endif %}" {% if p.main_link %}target="_blank" rel="noopener"{% endif %} aria-label="Open {{ p.title }}">
+      {% if p.image %}
+        <img src="{{ p.image.url }}" alt="{{ p.title }}" loading="lazy">
+      {% else %}
+        <div class="thumb-placeholder"><i class="bi bi-code-slash"></i></div>
+      {% endif %}
+      {% if p.main_link %}<span class="thumb-overlay"><i class="bi bi-box-arrow-up-right"></i></span>{% endif %}
+    </a>
+    <div class="project-body">
+      <span class="cat-badge">{{ p.get_category_display }}</span>
+      <h3>{{ p.title }}</h3>
+      <p>{{ p.description|truncatewords:28 }}</p>
+      <div class="chips">
+        {% for t in p.tech_list %}<span class="chip">{{ t }}</span>{% endfor %}
+      </div>
+      <div class="project-actions">
+        {% if p.live_link %}<a href="{{ p.live_link }}" target="_blank" rel="noopener" class="btn btn-sm btn-main"><i class="bi bi-box-arrow-up-right me-1"></i>Live</a>{% endif %}
+        {% if p.github_link %}<a href="{{ p.github_link }}" target="_blank" rel="noopener" class="btn btn-sm btn-outline-main"><i class="bi bi-github me-1"></i>GitHub</a>{% endif %}
+      </div>
+    </div>
+  </article>
+</div>
