@@ -132,3 +132,26 @@ MAILERS = {
         'BACKEND': 'django.core.mail.backends.console.EmailBackend',
     },
 }
+# Default storage settings:
+# - static files (CSS, JS) are served by WhiteNoise
+# - uploaded images go to the local media folder (used on your laptop)
+STORAGES = {
+    "default": {"BACKEND": "django.core.files.storage.FileSystemStorage"},
+    "staticfiles": {"BACKEND": "whitenoise.storage.CompressedStaticFilesStorage"},
+}
+
+# Cloudinary keys come from environment variables (we set them on Render)
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': os.environ.get('CLOUDINARY_CLOUD_NAME', ''),
+    'API_KEY': os.environ.get('CLOUDINARY_API_KEY', ''),
+    'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET', ''),
+}
+
+# When the Cloudinary keys exist (on Render), send uploaded images to Cloudinary instead
+if CLOUDINARY_STORAGE['CLOUD_NAME']:
+    STORAGES["default"] = {
+        "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
+    }
+
+# Use the same primary key type that your migrations already use
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
