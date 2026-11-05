@@ -157,3 +157,19 @@ if CLOUDINARY_STORAGE['CLOUD_NAME']:
 
 # Use the same primary key type that your migrations already use
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Print the full error details in the Render Logs, even when DEBUG is False
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {'class': 'logging.StreamHandler'},
+    },
+    'loggers': {
+        'django.request': {
+            'handlers': ['console'],
+            'level': 'ERROR',
+            'propagate': False,
+        },
+    },
+}
