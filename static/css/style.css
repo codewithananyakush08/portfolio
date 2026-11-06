@@ -213,8 +213,8 @@ main > .section:first-child { padding-top: 6rem; }
 .lead-text { font-size: 1.2rem; }
 
 /* Highlight colours inside the bio: name in indigo, role in amber */
-.hl-name { color: var(--primary) !important; font-weight: 800; }
-.hl-role { color: var(--accent)!important; font-weight: 700; }
+.hl-name { color: var(--primary); font-weight: 800; }
+.hl-role { color: var(--accent); font-weight: 700; }
 
 /* Bio text container: keeps lines at a comfortable reading width */
 .about-bio { max-width: 700px; }
