@@ -465,3 +465,84 @@ a.info-card:hover { border-color: var(--primary); transform: translateY(-3px); }
   .timeline-item::before { left: -2.2rem; }
   .form-card { padding: 1.25rem; }
 }
+
+/* Colour palette - change values here to restyle everything */
+:root {
+  --tl-primary: #1e3a8a;      /* deep navy blue for role headings */
+  --tl-accent: #0d9488;       /* teal for company names */
+  --tl-badge-bg: #e0e7ff;     /* light indigo badge background */
+  --tl-badge-text: #3730a3;   /* badge text colour */
+  --tl-ongoing-bg: #d1fae5;   /* light green for ongoing items */
+  --tl-ongoing-text: #065f46; /* dark green text for ongoing items */
+  --tl-text: #475569;         /* slate grey for description text */
+  --tl-card-bg: #ffffff;
+  --tl-border: #e2e8f0;
+}
+
+/* Card container */
+.timeline-card {
+  background: var(--tl-card-bg);
+  border: 1px solid var(--tl-border);
+  border-left: 4px solid var(--tl-primary);
+  border-radius: 10px;
+  padding: 18px 20px;
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Small lift effect on hover */
+.timeline-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.12);
+}
+
+/* Top badge (duration / status) */
+.card-badge {
+  display: inline-block;
+  background: var(--tl-badge-bg);
+  color: var(--tl-badge-text);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+
+/* Green badge for ongoing items */
+.badge-ongoing {
+  background: var(--tl-ongoing-bg);
+  color: var(--tl-ongoing-text);
+}
+
+/* Role / main heading */
+.card-role {
+  color: var(--tl-primary);
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 0 0 4px;
+}
+
+/* Company / institute name */
+.card-company {
+  color: var(--tl-accent);
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 0 0 8px;
+}
+
+/* Date range line */
+.card-meta {
+  color: #64748b;
+  font-size: 0.85rem;
+  font-style: italic;
+  margin: 0 0 6px;
+}
+
+/* Description text */
+.card-desc {
+  color: var(--tl-text);
+  font-size: 0.92rem;
+  line-height: 1.6;
+  margin: 0;
+}
